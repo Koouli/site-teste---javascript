@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Cadastro</title>
+</head>
+<body>
+    
+    <div class="card">
+
+        <h1>Bem-Vindo(a)</h1>
+        <h3> Cadastre seu produto aqui:</h3>
+        <div class="card_box">
+            <input id="produto" type="text">
+            <div class="card_cont">Nome do produto</div>
+        </div>
+       
+        <br>
+       
+        <div class="card_box">
+            <ul class="checkbox-marca" name="Tecido">
+                <li id="checkbox-opition" value="Tecido">Selecione os tecidos escolhidos:</li>
+                <li id="checkbox-opition" value="algodao">Algodão</li>
+                <li id="checkbox-opition" value="poliester">Poliéster</li>
+                <li id="checkbox-opition" value="jeans">Jeans</li>
+                <li id="checkbox-opition" value="cetim">Cetim</li>
+                <li id="checkbox-opition" value="renda">Renda</li>
+                <li id="checkbox-opition" value="outro">Outro</li>
+            </ul> 
+            <span id="checklist"></span>
+            <input type="button" id="btn-checkbox" value="click" onclick="checkboxlist()">
+            
+        </div>
+       
+        <br>
+       
+        <div class="card_box">
+            <input id="custo" type="text">
+            <div class="card_cont">Custo de produção</div>
+        </div>
+       
+        <br>
+       
+        <div class="card_box">
+            <input id="lucro" type="text">
+            <div class="card_cont">Lucro de venda</div>
+        </div>
+       
+        <br>
+        
+        <div class="card_box">
+            <input id="venda" type="text"> 
+            <div class="card_cont">Preço de venda</div>
+        </div>
+
+        <br>
+        
+        <div class="card_box">
+            
+            <input id="quant" type="text">
+            <div class="card_cont">Quantidade</div>
+        </div>
+
+        <br>
+
+        <div class="card_box">
+            
+            <input id="marca" type="image">
+            <div class="card_cont">Imagem</div>
+        </div>
+        <div class="color_button">
+            <button id="bg-color">Cor</button>
+        </div>
+        
+    </div>
+    
+    <script>
+        const bgcolor = document.getElementById('bg-color');
+        listcolor = ['#FFC4BF', '#80E8FF', '#34A853', '#DC493A', '#DC493A', '#D7B2FF', '#B7FFBE','#F0BC8C', '#4392F1', '#06B8A6'];
+        
+        
+        bgcolor.addEventListener('click', function onClick(event){
+            
+            color = listcolor[Math.floor(Math.random() * listcolor.length)];
+            document.body.style.backgroundColor = color;
+            document.getElementById('bg-color').style.backgroundColor = color;
+            console.log(color);
+
+        });
+
+
+        function checkboxlist(){
+            var checkboxlist=document.getElementById('checklist');
+            checkboxlist.value="";
+            var marca=document.getElementsByClassName('checkbox-marca');
+            for (var i=0; i<marca.opitions.length;i++){
+                if(marca.opitions[i].selected === true){
+                    checkboxlist.value +=marca.opitions[i].value + "";
+                    document.getElementById('checklist').innerHTML=checkboxlist.value;
+                }
+            }
+            if(document.getElementById ('checklist'). value == ""){
+                document.getElementById('checklist').innerHTML="Selecione o tecido:";
+            }
+        }
+
+    </script>
+</body>
+</html>
